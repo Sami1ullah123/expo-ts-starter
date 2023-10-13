@@ -10,18 +10,26 @@ interface IconSetsMap {
     iconName: EntypoIcons;
   };
   FontAwesome: {
-    iconName: FontAwesomeIcons
+    iconName: FontAwesomeIcons;
   };
   // Add more at some point
 }
 
-interface IconButtonProps<T extends keyof IconSetsMap> extends TouchableOpacityProps {
+interface IconButtonProps<T extends keyof IconSetsMap>
+  extends TouchableOpacityProps {
   iconName: IconSetsMap[T]["iconName"];
   iconSet?: T;
-  iconSize?: number
+  iconSize?: number;
+  iconColor?: string;
 }
 
-const IconButton = <T extends keyof IconSetsMap>({ iconName, iconSet = "Entypo", iconSize, ...props }: IconButtonProps<T>) => {
+const IconButton = <T extends keyof IconSetsMap>({
+  iconName,
+  iconSet = "Entypo",
+  iconSize,
+  iconColor,
+  ...props
+}: IconButtonProps<T>) => {
   const IconComponent = IconSets[iconSet];
 
   if (!IconComponent) {
@@ -35,14 +43,17 @@ const IconButton = <T extends keyof IconSetsMap>({ iconName, iconSet = "Entypo",
     return null;
   }
 
-  const { colors} = useTheme()
+  const { colors } = useTheme();
 
   return (
-    <TouchableOpacity {...props}>
-      <IconComponent name={iconName} color={colors.text} size={iconSize || Defaults.ICON_SIZE} />
+    <TouchableOpacity activeOpacity={1} {...props}>
+      <IconComponent
+        name={iconName}
+        size={iconSize || Defaults.ICON_SIZE}
+        color={iconColor || colors.text}
+      />
     </TouchableOpacity>
   );
-}
+};
 
 export default IconButton;
-

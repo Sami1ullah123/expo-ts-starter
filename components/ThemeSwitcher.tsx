@@ -1,21 +1,18 @@
 import React from "react";
 import { useAppContext } from "./AppContext";
-import { TouchableOpacity } from "react-native";
-import { Entypo } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import { Defaults } from "../constants/defaults";
+import { IconButton } from "../atoms";
 
 const ThemeSwitcher: React.FC = () => {
   const { toggleDark } = useAppContext();
-  const { colors, dark } = useTheme();
+  const { dark } = useTheme();
   return (
-    <TouchableOpacity onPress={toggleDark}>
-      <Entypo
-        name={dark ? "moon" : "light-up"}
-        color={colors.text}
-        size={Defaults.ICON_SIZE}
-      />
-    </TouchableOpacity>
+    <IconButton
+      iconName={dark ? "light-up": "moon"}
+      onPress={toggleDark}
+      iconSize={Defaults.ICON_SIZE}
+    />
   );
 };
 

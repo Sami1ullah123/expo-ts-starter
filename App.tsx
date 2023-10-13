@@ -1,27 +1,24 @@
 import AppContext from "./components/AppContext";
-import {
-  DarkTheme,
-  DefaultTheme,
-  NavigationContainer,
-  ThemeProvider,
-} from "@react-navigation/native";
+import { NavigationContainer, ThemeProvider } from "@react-navigation/native";
 import { useDarkMode } from "./hooks/useDarkMode";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Navigation } from "./components";
+import { StatusBar } from "expo-status-bar";
+import { darkTheme, lightTheme } from "./constants/themes";
 
 export default function App() {
   const { isDark, toggleDark } = useDarkMode();
 
   return (
     <AppContext.Provider value={{ isDark, toggleDark }}>
-      <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
+      <ThemeProvider value={isDark ? darkTheme : lightTheme}>
         <SafeAreaProvider>
-        <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
-          <Navigation />
-        </NavigationContainer>
+          <NavigationContainer theme={isDark ? darkTheme : lightTheme}>
+            <Navigation />
+            <StatusBar style={isDark ? "light" : "dark"} />
+          </NavigationContainer>
         </SafeAreaProvider>
       </ThemeProvider>
     </AppContext.Provider>
   );
 }
-
