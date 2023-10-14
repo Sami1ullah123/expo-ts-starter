@@ -1,12 +1,13 @@
 import React from "react";
 import { View, StyleProp, StyleSheet, ViewStyle } from "react-native";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { Text } from "../atoms";
-import { useRoute, useTheme } from "@react-navigation/native";
+import { IconButton, Text } from "../atoms";
+import { useNavigation, useRoute, useTheme } from "@react-navigation/native";
 
 const NavigationHeader: React.FC = () => {
   const { colors } = useTheme();
   const { name } = useRoute();
+  const { canGoBack, goBack } = useNavigation()
 
   const defaultStyles: StyleProp<ViewStyle> = {
     backgroundColor: colors.background,
@@ -15,6 +16,7 @@ const NavigationHeader: React.FC = () => {
 
   return (
     <View style={[defaultStyles, styles.header]}>
+      {canGoBack() && <IconButton iconSet="FontAwesome" iconName="angle-left" onPress={goBack} />}
       <Text bold uppercase>{name}</Text>
       <ThemeSwitcher />
     </View>

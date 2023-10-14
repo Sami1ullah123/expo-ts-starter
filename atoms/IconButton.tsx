@@ -1,16 +1,16 @@
 import React from "react";
 import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 import * as IconSets from "@expo/vector-icons";
-import { EntypoIcons, FontAwesomeIcons } from "../constants/iconNames";
 import { useTheme } from "@react-navigation/native";
 import { Defaults } from "../constants";
+import { EntypoIcons, FontAwsomeIcons } from "../constants/icons";
 
 interface IconSetsMap {
   Entypo: {
     iconName: EntypoIcons;
   };
   FontAwesome: {
-    iconName: FontAwesomeIcons;
+    iconName: FontAwsomeIcons;
   };
   // Add more at some point
 }
