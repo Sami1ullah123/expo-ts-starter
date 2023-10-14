@@ -3,7 +3,7 @@ import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 import * as IconSets from "@expo/vector-icons";
 import { EntypoIcons, FontAwesomeIcons } from "../constants/iconNames";
 import { useTheme } from "@react-navigation/native";
-import { Defaults } from "../constants/defaults";
+import { Defaults } from "../constants";
 
 interface IconSetsMap {
   Entypo: {

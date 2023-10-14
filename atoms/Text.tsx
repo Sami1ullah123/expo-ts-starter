@@ -6,7 +6,7 @@ import {
   StyleProp,
   TextStyle,
 } from "react-native";
-import { Defaults } from "../constants/defaults";
+import { Defaults } from "../constants";
 
 interface TextProps extends RNTextProps {
   children: React.ReactNode;

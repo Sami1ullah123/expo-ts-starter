@@ -1,8 +1,8 @@
 import React from "react";
 import { useAppContext } from "./AppContext";
 import { useTheme } from "@react-navigation/native";
-import { Defaults } from "../constants/defaults";
 import { IconButton } from "../atoms";
+import { Defaults } from "../constants";
 
 const ThemeSwitcher: React.FC = () => {
   const { toggleDark } = useAppContext();
