@@ -1,12 +1,11 @@
 import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
-import { Switch, Text } from "../atoms";
+import { Text } from "../atoms";
 
 const Home: React.FC = () => {
   return (
     <SafeAreaView style={styles.home}>
       <Text>Edit screens/Home.tsx to start working on your app</Text>
-      <Switch />
     </SafeAreaView>
   );
 };
