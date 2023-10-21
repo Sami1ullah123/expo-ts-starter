@@ -9,8 +9,10 @@ import { darkTheme, lightTheme } from "./constants/themes";
 export default function App() {
   const { isDark, toggleDark } = useDarkMode();
 
+  const globals = { isDark, toggleDark }
+
   return (
-    <AppContext.Provider value={{ isDark, toggleDark }}>
+    <AppContext.Provider value={globals}>
       <ThemeProvider value={isDark ? darkTheme : lightTheme}>
         <SafeAreaProvider>
           <NavigationContainer theme={isDark ? darkTheme : lightTheme}>
