@@ -1,5 +1,6 @@
 import React from "react";
-import { TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { StyleProp, TouchableOpacity, TouchableOpacityProps, ViewStyle } from "react-native";
+import Text  from "./Text";
 import * as IconSets from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import { Defaults } from "../constants";
@@ -21,6 +22,9 @@ interface IconButtonProps<T extends keyof IconSetsMap>
   iconSet?: T;
   iconSize?: number;
   iconColor?: string;
+  label?: string;
+  labelPosition?: "left" | "right"
+  width?: number
 }
 
 const IconButton = <T extends keyof IconSetsMap>({
@@ -28,6 +32,9 @@ const IconButton = <T extends keyof IconSetsMap>({
   iconSet = "Entypo",
   iconSize,
   iconColor,
+  label,
+  labelPosition,
+  width,
   ...props
 }: IconButtonProps<T>) => {
   const IconComponent = IconSets[iconSet];
@@ -45,13 +52,25 @@ const IconButton = <T extends keyof IconSetsMap>({
 
   const { colors } = useTheme();
 
+  const defaultStyle: StyleProp<ViewStyle> = {
+    flexDirection: "column",
+    width: `${width}%` || "auto"
+  }
+
+const labeledStyle: StyleProp<ViewStyle> = {
+    flexDirection: labelPosition === "left" ? "row-reverse" : "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+  }
+
   return (
-    <TouchableOpacity activeOpacity={1} {...props}>
+    <TouchableOpacity activeOpacity={1} style={label ? labeledStyle: defaultStyle} {...props}>
       <IconComponent
         name={iconName}
         size={iconSize || Defaults.ICON_SIZE}
         color={iconColor || colors.text}
       />
+      {label && <Text>{label}</Text>}
     </TouchableOpacity>
   );
 };
