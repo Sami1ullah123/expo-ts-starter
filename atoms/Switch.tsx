@@ -16,7 +16,6 @@ const Switch: React.FC<SwitchProps> = ({ style, ...props }) => {
 
   const defaultStyles: StyleProp<ViewStyle> = {
     borderWidth: 1,
-    borderColor: colors.primary,
   };
 
   return (
