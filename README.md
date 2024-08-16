@@ -1,20 +1,11 @@
-# Expo TS Starter
+# Heard Sync 
 
-An expo template for new react native projects
+An application build using react native expo
 
-## Features
-
-- Light / daek mode switcher out of the box
-- Custom components that follow thr theme colors
-- More to come
 
 ## Install
 
 Clone this repository
-
-```sh
-npx degit GabrielCrackPro/expo-ts-starter <app_name>
-```
 
 Run this command in the root directory
 
@@ -29,3 +20,14 @@ mpm install
 ```sh
 yarn
 ```
+
+Enter this command to run the app
+
+- For Android
+
+npx expo run:android
+
+- For IOS
+
+npx expo run:ios
+
